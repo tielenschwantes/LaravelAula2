@@ -13,7 +13,12 @@ class AddMensagensTable extends Migration
      */
     public function up()
     {
-        Schema::table('mensagens', function (Blueprint $table) {
+        Schema::create('mensagens', function (Blueprint $table) {
+            $table->increments('id');           //código identificador
+            $table->string('titulo');            //título da atividade
+            $table->string('texto');      //descrição da atividade
+            $table->string('autor');
+            $table->timestamps();               //registro created_at e updated_at
             //
         });
     }
@@ -26,13 +31,7 @@ class AddMensagensTable extends Migration
     public function down()
     {
         Schema::table('mensagens', function (Blueprint $table) {
-            $table->increments('id');           //código identificador
-            $table->string('titulo');            //título da atividade
-            $table->string('texto');      //descrição da atividade
-            $table->string('autor');
-            $table->dateTime('scheduledto');    //agendado para
-            $table->timestamps();               //registro created_at e updated_at
-            //
+           
         });
     }
 }
