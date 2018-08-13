@@ -17,6 +17,7 @@ class AtividadeController extends Controller
         $listaAtividades = Atividade::all();
         return view('atividade.list',['atividades' => $listaAtividades]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -45,9 +46,10 @@ class AtividadeController extends Controller
      * @param  \App\Atividade  $atividade
      * @return \Illuminate\Http\Response
      */
-    public function show(Atividade $atividade)
+    public function show($id)
     {
-        //
+        $atividade = Atividade::find($id);
+        return view('atividade.show',['atividade' => $atividade]);
     }
 
     /**
