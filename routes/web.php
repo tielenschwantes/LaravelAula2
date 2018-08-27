@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/atividades/create', 'AtividadeController@create');
+
+Route::get('/mensagens/create', 'MensagemController@create');
+
 Route::post('/atividades', 'AtividadeController@store');
+
+Route::post('/mensagens', 'MensagemController@store');
 
 Route::get('/atividades', 'AtividadeController@index');
 
