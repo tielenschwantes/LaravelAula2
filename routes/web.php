@@ -38,3 +38,11 @@ Route::put('/atividades/{id}', 'AtividadeController@update');
 Route::get('/mensagens/{id}/edit', 'MensagemController@edit');
 
 Route::put('/mensagens/{id}', 'MensagemController@update');
+
+Route::get('/atividades/{id}/delete', 'AtividadeController@delete');
+
+Route::get('/mensagens/{id}/delete', 'MensagemController@delete');
+
+Route::get('/atividades/{id}', 'AtividadeController@destroy');
+
+Route::get('/mensagens/{id}', 'MensagemController@destroy');

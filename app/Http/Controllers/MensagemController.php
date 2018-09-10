@@ -106,15 +106,15 @@ class MensagemController extends Controller
         //faço as validações dos campos
         //vetor com as mensagens de erro
         $messages = array(
-            'title.required' => 'É obrigatório um título para a atividade',
-            'description.required' => 'É obrigatória uma descrição para a atividade',
-            'scheduledto.required' => 'É obrigatório o cadastro da data/hora da atividade',
+            'titulo.required' => 'É obrigatório um título para a atividade',
+            'texto.required' => 'É obrigatória uma descrição para a atividade',
+            'autor.required' => 'É obrigatório o cadastro da data/hora da atividade',
         );
         //vetor com as especificações de validações
         $regras = array(
-            'title' => 'required|string|max:255',
-            'description' => 'required',
-            'scheduledto' => 'required|string',
+            'titulo' => 'required|string|max:255',
+            'texto' => 'required',
+            'autor' => 'required|string',
         );
         //cria o objeto com as regras de validação
         $validador = Validator::make($request->all(), $regras, $messages);
@@ -125,11 +125,11 @@ class MensagemController extends Controller
             ->withInput($request->all);
         }
         //se passou pelas validações, processa e salva no banco...
-        $obj_atividade = Atividade::findOrFail($id);
-        $obj_atividade->title =       $request['title'];
-        $obj_atividade->description = $request['description'];
-        $obj_atividade->scheduledto = $request['scheduledto'];
-        $obj_atividade->save();
+        $obj_Mensagem = Mensagem::findOrFail($id);
+        $obj_Mensagem->titulo =       $request['titulo'];
+        $obj_Mensagem->texto = $request['texto'];
+        $obj_Mensagem->autor = $request['autor'];
+        $obj_Mensagem->save();
         return redirect('/mensagens')->with('success', 'Mensagem alterada com sucesso!!');
     }
 
@@ -139,8 +139,16 @@ class MensagemController extends Controller
      * @param  \App\mensagem  $mensagem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(mensagem $mensagem)
+    public function destroy($id)
     {
-        //
+        $obj_mensagem = Mensagem::findOrFail($id);
+        $obj_mensagem->delete($id);
+        return redirect('/mensagens')->with('success','Mensagem excluída com Sucesso!!');
+    }
+
+    public function delete($id)
+    {
+        $obj_Mensagem = Mensagem::find($id);
+        return view('mensagem.delete',['mensagem' => $obj_Mensagem]);
     }
 }
