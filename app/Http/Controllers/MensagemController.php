@@ -48,8 +48,8 @@ class MensagemController extends Controller
         );
         //vetor com as especificações de validações
         $regras = array(
-            'title' => 'required|string|max:255',
-            'description' => 'required',
+            'titulo' => 'required|string|max:255',
+            'texto' => 'required',
             'autor' => 'required|string',
         );
         //cria o objeto com as regras de validação

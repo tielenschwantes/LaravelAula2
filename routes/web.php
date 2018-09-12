@@ -43,6 +43,6 @@ Route::get('/atividades/{id}/delete', 'AtividadeController@delete');
 
 Route::get('/mensagens/{id}/delete', 'MensagemController@delete');
 
-Route::get('/atividades/{id}', 'AtividadeController@destroy');
+Route::delete('/atividades/{id}', 'AtividadeController@destroy');
 
-Route::get('/mensagens/{id}', 'MensagemController@destroy');
+Route::delete('/mensagens/{id}', 'MensagemController@destroy');
