@@ -31,7 +31,8 @@ class MensagemController extends Controller
      */
     public function create()
     {
-        return view('mensagem.create');
+        $atividades=Atividade::all();
+        return view('mensagem.create',['atividades'=>$atividades]);
     }
 
     /**
@@ -71,6 +72,7 @@ class MensagemController extends Controller
         $obj_Mensagem->texto = $request['texto'];
         $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->user_id = Auth::id();
+        $obj_Mensagem->atividade_id = Auth::id();
         $obj_Mensagem->save();
         return redirect('/mensagens')->with('success', 'Mensagem criada com sucesso!!');
     }
@@ -136,6 +138,7 @@ class MensagemController extends Controller
         $obj_Mensagem->texto = $request['texto'];
         $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->user_id = Auth::id();
+        $obj_Mensagem->atividade_id = Auth::id();
         $obj_Mensagem->save();
         return redirect('/mensagens')->with('success', 'Mensagem alterada com sucesso!!');
     }
