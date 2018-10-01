@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\mensagem;
+use App\Atividade;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +18,11 @@ class MensagemController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $listaMensagens = Mensagem::where('user_id', Auth::id())->get();
+            $listaMensagens = Mensagem::where('user_id', Auth::id())->paginate(3);
         }else{
-            $listaMensagens = Mensagem::all();
+            $listaMensagens = Mensagem::paginate(3);
         }
+
         return view('mensagem.list',['mensagens' => $listaMensagens]);
     }
 

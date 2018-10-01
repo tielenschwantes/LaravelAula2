@@ -16,3 +16,5 @@
 	<p>{{$mensagem->autor}}</p>
 	<br>
 @endforeach
+
+{{ $mensagens->links() }}

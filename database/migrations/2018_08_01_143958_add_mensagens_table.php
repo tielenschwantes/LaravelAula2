@@ -27,7 +27,7 @@ class AddMensagensTable extends Migration
         Schema::table('mensagens', function($table){
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('atividade_id')->references('id')->on('atividades');
-
+        });
     }
 
     /**
