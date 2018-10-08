@@ -22,7 +22,7 @@ class AtividadeController extends Controller
         }else{
             $listaAtividades = Atividade::all();
         }
-        return view('atividade.list',['atividades' => $listaAtividades]);
+        return view('atividade.list',['listaAtividades' => $listaAtividades]);
     }
     
 
